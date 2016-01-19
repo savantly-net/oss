@@ -1,6 +1,7 @@
 #spring-fixtures
 
 Spring-fixtures is a library that makes integration testing easier.
+It is also helpful when prototyping and demonstrating an application.
 
 ###Fixtures
 
@@ -9,7 +10,6 @@ A fixture can implement the [Fixture](src/main/java/net/savantly/spring/fixture/
 The AbstractBaseFixture manages fixture dependencies on other fixtures. Suppose you have an "Order" entity that requires instances of "Item" and "Customer" entities. The "Item" and "Customer" fixtures can be added as dependencies of the "Order" fixture so the installation of the prerequisites are ensured.
 An example of this can be found [here](src/test/java/net/savantly/example/fixture/OrderFixture.java)
 
-This fixture library is also helpful when prototyping and demonstrating a UI.
 
 The AbstractBaseFixture expects an Entity, and a Repository class that extends [CrudReposity](http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html)
 
@@ -20,11 +20,8 @@ Examples of fixtures and tests are included
 
 An abstract fixture test is available. No implementation is required.
 [src/test/java/net/savantly/example/test/AbstractFixtureTest.java](src/test/java/net/savantly/example/test/AbstractFixtureTest.java)
-<pre class="prettyprint">
-public class ItemFixtureTest extends AbstractFixtureTest<Item, ItemFixture, ItemRepository> {
 
-}
-</pre>
+    public class ItemFixtureTest extends AbstractFixtureTest<Item, ItemFixture, ItemRepository> {}
 
 
 ###RandomGenerator
@@ -36,33 +33,30 @@ The RandomGenerator can produce varying lengths of strings or paragraphs, and pr
 
 
 ###Example Fixture -
-<pre class="prettyprint">
-@Service
-public class ItemFixture extends AbstractBaseFixture<Item, ItemRepository>{
 
-	@Autowired
-	public ItemFixture(ItemRepository repository) {
-		super(repository);
-	}
 
-	@Override
-	public void addEntities(List<Item> entityList) {
-		log.info("Adding Item Entities to Fixture");
-		for (int i = 0; i < 20; i++) {
-			Item item = new Item();
-			item.setDescription(getRandomAlphaWordString(20, 10));
-			item.setPrice(getRandomMoneyValue(8000, 2, false));
-			entityList.add(item);
-			log.debug(String.format("Entity added: %s", item));
-		}
-	}
-
-	@Override
-	public void addDependencies(List<Fixture<Item>> dependencies) {
-		// There are no fixture dependencies
-	}
-
-}
-</pre>
-
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    @Service
+    public class ItemFixture extends AbstractBaseFixture<Item, ItemRepository>{
+	    @Autowired
+	    public ItemFixture(ItemRepository repository) {
+	    	super(repository);
+	    }
+	
+	    @Override
+	    public void addEntities(List<Item> entityList) {
+	    	log.info("Adding Item Entities to Fixture");
+	    	for (int i = 0; i < 20; i++) {
+	    		Item item = new Item();
+	    		item.setDescription(getRandomAlphaWordString(20, 10));
+	    		item.setPrice(getRandomMoneyValue(8000, 2, false));
+	    		entityList.add(item);
+	    		log.debug(String.format("Entity added: %s", item));
+	    	}
+	    }
+	
+	    @Override
+	    public void addDependencies(List<Fixture<Item>> dependencies) {
+	    	// There are no fixture dependencies
+	    }
+    }
+    
