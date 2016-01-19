@@ -42,7 +42,7 @@ public class CustomerFixture extends AbstractBaseFixture<Customer, CustomerRepos
 	}
 
 	@Override
-	public void addDependencies(List<Fixture<Customer>> dependencies) {
+	public void addDependencies(List<Fixture<?>> dependencies) {
 		// This fixture doesn't depend on other fixtures
 	}
 

@@ -18,7 +18,7 @@ public class Customer {
 	private String city;
 	private String state;
 	private String zipcode;
-	@OneToMany
+	@OneToMany(mappedBy="customer")
 	private Collection<Order> orders;
 	
 	public String getId() {

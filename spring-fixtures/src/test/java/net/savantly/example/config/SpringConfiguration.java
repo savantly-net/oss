@@ -58,6 +58,7 @@ public class SpringConfiguration {
 	protected Map<String, Object> getVendorProperties() {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("eclipselink.weaving", "false");
+		//map.put("eclipselink.logging.level.sql", "FINE");
 		return map;
 	}
 	

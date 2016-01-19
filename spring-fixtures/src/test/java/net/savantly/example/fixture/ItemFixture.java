@@ -32,7 +32,7 @@ public class ItemFixture extends AbstractBaseFixture<Item, ItemRepository>{
 	}
 
 	@Override
-	public void addDependencies(List<Fixture<Item>> dependencies) {
+	public void addDependencies(List<Fixture<?>> dependencies) {
 		// There are no fixture dependencies
 	}
 

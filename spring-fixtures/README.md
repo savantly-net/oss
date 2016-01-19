@@ -4,7 +4,12 @@ Spring-fixtures is a library that makes integration testing easier.
 
 ###Fixtures
 
-Each fixture must implement the [Fixture](src/main/java/net/savantly/spring/fixture/Fixture.java) interface, or extend the provided [AbstractBaseFixture](src/main/java/net/savantly/spring/fixture/AbstractBaseFixture.java)
+A fixture can implement the [Fixture](src/main/java/net/savantly/spring/fixture/Fixture.java) interface, or extend the provided [AbstractBaseFixture](src/main/java/net/savantly/spring/fixture/AbstractBaseFixture.java)
+
+The AbstractBaseFixture manages fixture dependencies on other fixtures. Suppose you have an "Order" entity that requires instances of "Item" and "Customer" entities. The "Item" and "Customer" fixtures can be added as dependencies of the "Order" fixture so the installation of the prerequisites are ensured.
+An example of this can be found [here](src/test/java/net/savantly/example/fixture/OrderFixture.java)
+
+This fixture library is also helpful when prototyping and demonstrating a UI.
 
 The AbstractBaseFixture expects an Entity, and a Repository class that extends [CrudReposity](http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html)
 
