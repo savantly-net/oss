@@ -55,7 +55,7 @@ The RandomGenerator can produce varying lengths of strings or paragraphs, and pr
 	    }
 	
 	    @Override
-	    public void addDependencies(List<Fixture<Item>> dependencies) {
+	    public void addDependencies(List<Fixture<?>> dependencies) {
 	    	// There are no fixture dependencies
 	    }
     }
