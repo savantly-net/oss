@@ -33,8 +33,7 @@ public class ItemFixture extends AbstractBaseFixture<Item, ItemRepository>{
 
 	@Override
 	public void addDependencies(List<Fixture<Item>> dependencies) {
-		// TODO Auto-generated method stub
-		
+		// There are no fixture dependencies
 	}
 
 }
