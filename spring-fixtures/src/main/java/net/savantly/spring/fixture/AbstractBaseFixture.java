@@ -27,6 +27,10 @@ public abstract class AbstractBaseFixture<T, R extends CrudRepository<T, ?>> imp
 	}
 
 	public void install() {
+		if(installed){
+			log.warn("Fixture already installed");
+			return;
+		}
 		log.info("Beginning Fixture Install");
 		synchronized (lock) {
 			ensureDependenciesAreInstalled();
@@ -51,6 +55,10 @@ public abstract class AbstractBaseFixture<T, R extends CrudRepository<T, ?>> imp
 	}
 
 	public void uninstall() {
+		if(!installed){
+			log.warn("Fixture not installed");
+			return;
+		}
 		log.info("Beginning Fixture Uninstall");
 		synchronized (lock) {
 			repository.delete(entityList);
